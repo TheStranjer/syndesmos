@@ -7,7 +7,7 @@ module HTTPStub
     attr_accessor :body
 
     def self.rig(responses)
-      @@responses = responses
+      @@responses = responses.reverse
     end
 
     def initialize(a,b)
