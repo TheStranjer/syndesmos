@@ -1,5 +1,8 @@
 require 'net/http'
 require 'json'
+require_relative 'generics'
+require_relative 'login'
+require_relative 'media'
 
 class Syndesmos
   attr_reader :bearer_token, :username, :password, :instance, :api
