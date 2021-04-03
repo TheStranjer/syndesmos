@@ -16,7 +16,7 @@ class Syndesmos
   def execute_hooks
     while true
       handle_notifications if hooks[:notification] and hooks[:notification].length > 0
-      sleep 60
+      sleep hooks.values.flatten.length > 0 ? 60 : 1
     end
   end
 
