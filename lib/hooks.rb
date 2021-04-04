@@ -23,7 +23,13 @@ class Syndesmos
   def handle_notifications
     self.last_notification_id = notifications({ "with_muted" => true, "limit" => 20 }).collect { |notif| notif['id'].to_i }.max if self.last_notification_id.nil?
 
-    notifications({ "with_muted" => true, "limit" => 20, "since_id" => self.last_notification_id }).each do |notif|
+    notifs = begin
+      notifications({ "with_muted" => true, "limit" => 20, "since_id" => self.last_notification_id })
+    rescue => e
+      []
+    end
+
+    notifs.each do |notif|
       self.last_notification_id = notif['id'].to_i if notif['id'].to_i > self.last_notification_id
       hooks[:notification].each do |hook|
         hook[:object].send(hook[:method], notif)
