@@ -27,38 +27,29 @@ class Syndesmos
     "/api/v1/accounts/update_credentials"
   ]
 
-  GENERIC_TYPES = [GENERIC_PATCHES, GENERIC_GETS, GENERIC_POSTS]
+  GENERIC_TYPES = {:patch => GENERIC_PATCHES, :get => GENERIC_GETS, :post => GENERIC_POSTS}
 
   def self.generic_name(path, http_method)
-    if GENERIC_TYPES.select { |http_method| http_method.include?(path) }.length > 1
+    if GENERIC_TYPES.select { |http_method, actions| actions.include?(path) }.length > 1
       "#{http_method}_#{path.split('/').last}".to_sym
     else
       path.split('/').last.to_sym
     end
   end
 
-  GENERIC_GETS.each do |get|
-    define_method(Syndesmos.generic_name(get, :get)) do |params = {}|
-      req(path: get, http_method: :get, params: params)
-    end
-  end
-
-  GENERIC_POSTS.each do |post|
-    meth_name = Syndesmos.generic_name(post, :post)
-    if post.include?("$ID")
-      define_method(meth_name) do |id, params={}|
-        req(path: post.gsub("$ID", id), http_method: :post, params: params)
-      end
-    else
-      define_method(meth_name) do |params={}|
-        req(path: post, http_method: :post, params: params)
+  GENERIC_TYPES.each do |http_method, actions|
+    actions.each do |action|
+      meth_name = Syndesmos.generic_name(action, http_method)
+      if action.include?("$ID")
+        define_method(meth_name) do |id, params={}|
+          req(path: action.gsub("$ID", id), http_method: http_method, params: params)
+        end
+      else
+        define_method(meth_name) do |params={}|
+          req(path: action, http_method: http_method, params: params)
+        end
       end
     end
   end
 
-  GENERIC_PATCHES.each do |patch|
-    define_method(Syndesmos.generic_name(patch, :patch)) do |params = {}|
-      req(path: patch, http_method: :patch, params: params)
-    end
-  end
 end

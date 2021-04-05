@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'syndesmos'
-  s.version     = '0.2.1'
+  s.version     = '0.2.2'
   s.summary     = "A Pleroma client gem"
   s.description = "A client gem for Pleroma, which allows someone to interface with any instance"
   s.authors     = ["NEETzsche"]
