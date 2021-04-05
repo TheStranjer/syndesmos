@@ -23,8 +23,14 @@ class Syndesmos
     "/api/pleroma/admin/relay"
   ]
 
+  GENERIC_PATCHES = [
+    "/api/v1/accounts/update_credentials"
+  ]
+
+  GENERIC_TYPES = [GENERIC_PATCHES, GENERIC_GETS, GENERIC_POSTS]
+
   def self.generic_name(path, http_method)
-    if GENERIC_GETS.include?(path) and GENERIC_POSTS.include?(path)
+    if GENERIC_TYPES.select { |http_method| http_method.include?(path) }.length > 1
       "#{http_method}_#{path.split('/').last}".to_sym
     else
       path.split('/').last.to_sym
@@ -47,6 +53,12 @@ class Syndesmos
       define_method(meth_name) do |params={}|
         req(path: post, http_method: :post, params: params)
       end
+    end
+  end
+
+  GENERIC_PATCHES.each do |patch|
+    define_method(Syndesmos.generic_name(patch, :patch)) do |params = {}|
+      req(path: patch, http_method: :patch, params: params)
     end
   end
 end

@@ -52,6 +52,8 @@ class Syndesmos
       api::Get
     when :post
       api::Post
+    when :patch
+      api::Patch
     end
   end
 end
