@@ -8,7 +8,9 @@ class Syndesmos
     "/api/v1/notifications",
     "/api/pleroma/admin/relay",
     "/api/v1/instance/peers",
-    "/api/v1/accounts/verify_credentials"
+    "/api/v1/accounts/verify_credentials",
+    "/api/v1/accounts/$ID/following",
+    "/api/v1/accounts/$ID/followers"
   ]
 
   GENERIC_POSTS = [
