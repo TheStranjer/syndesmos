@@ -18,8 +18,8 @@ class Syndesmos
     "/api/v1/statuses/$ID/unfavourite",
     "/api/v1/statuses/$ID/reblog",
     "/api/v1/statuses/$ID/unreblog",
-    "/api/v1/statuses/$ID/follow",
-    "/api/v1/statuses/$ID/unfollow",
+    "/api/v1/accounts/$ID/follow",
+    "/api/v1/accounts/$ID/unfollow",
     "/api/v1/pleroma/accounts/$ID/unsubscribe",
     "/api/v1/statuses",
     "/api/pleroma/admin/relay"
