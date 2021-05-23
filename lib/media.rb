@@ -8,10 +8,12 @@ class Syndesmos
 
     req = Net::HTTP::Post.new(uri.request_uri)
     req['Authorization'] = "Bearer #{bearer_token}"
-    req.set_form({"file" => File.open(filename)}, "multipart/form-data")
+    file = File.open(filename)
+    req.set_form({"file" => file}, "multipart/form-data")
 
     res = http.request(req)
 
+    file.close
     JSON.parse(res.body)
   end
 end
