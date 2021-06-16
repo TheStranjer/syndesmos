@@ -29,7 +29,11 @@ class Syndesmos
     "/api/v1/accounts/update_credentials"
   ]
 
-  GENERIC_TYPES = {:patch => GENERIC_PATCHES, :get => GENERIC_GETS, :post => GENERIC_POSTS}
+  GENERIC_DELETES = [
+    "/api/v1/scheduled_statuses/$ID"
+  ]
+
+  GENERIC_TYPES = {:patch => GENERIC_PATCHES, :get => GENERIC_GETS, :post => GENERIC_POSTS, :delete => GENERIC_DELETES}
 
   def self.generic_name(path, http_method)
     if GENERIC_TYPES.select { |http_method, actions| actions.include?(path) }.length > 1
