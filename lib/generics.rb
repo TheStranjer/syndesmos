@@ -36,11 +36,15 @@ class Syndesmos
 
   GENERIC_TYPES = {:patch => GENERIC_PATCHES, :get => GENERIC_GETS, :post => GENERIC_POSTS, :delete => GENERIC_DELETES}
 
+  def self.meth_name_end(path)
+      path.split('/').last.to_sym
+  end
+
   def self.generic_name(path, http_method)
-    if GENERIC_TYPES.select { |http_method, actions| actions.include?(path) }.length > 1
+    if GENERIC_TYPES.select { |http_method, actions| actions.collect { |action| Syndesmos.meth_name_end(action) }.include?(Syndesmos.meth_name_end(path)) }.length > 1
       "#{http_method}_#{path.split('/').last}".to_sym
     else
-      path.split('/').last.to_sym
+      Syndesmos.meth_name_end(path)
     end
   end
 
