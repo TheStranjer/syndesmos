@@ -11,7 +11,9 @@ class Syndesmos
     "/api/v1/accounts/verify_credentials",
     "/api/v1/accounts/$ID/following",
     "/api/v1/accounts/$ID/followers",
-    "/api/v1/accounts/$ID/statuses"
+    "/api/v1/accounts/$ID/statuses",
+    "/api/v1/instance/peers",
+    "/api/v1/pleroma/admin/relay"
   ]
 
   GENERIC_POSTS = [
