@@ -11,6 +11,7 @@ class Syndesmos
     "/api/v1/accounts/verify_credentials",
     "/api/v1/accounts/$ID/following",
     "/api/v1/accounts/$ID/followers",
+    "/api/v1/pleroma/accounts/$ID/scrobbles",
     "/api/v1/accounts/$ID/statuses",
     "/api/v1/instance/peers",
     "/api/v1/pleroma/admin/relay"
@@ -25,7 +26,8 @@ class Syndesmos
     "/api/v1/accounts/$ID/unfollow",
     "/api/v1/pleroma/accounts/$ID/unsubscribe",
     "/api/v1/statuses",
-    "/api/pleroma/admin/relay"
+    "/api/v1/pleroma/scrobble",
+    "/api/v1/pleroma/admin/relay"
   ]
 
   GENERIC_PATCHES = [
