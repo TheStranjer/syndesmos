@@ -1,3 +1,7 @@
+# About
+
+Syndesmos is a Ruby gem intended to be a frontend interface for Pleroma, an implementation of the fediverse backend.
+
 # Installation
 
 In Gemfile, add:
