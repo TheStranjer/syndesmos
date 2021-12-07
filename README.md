@@ -50,4 +50,5 @@ client.statuses({ status: "I just made my first scrobble! And you don't even und
 `post_statuses     ` | `POST  ` | `/api/v1/statuses`
 `scrobble          ` | `POST  ` | `/api/v1/pleroma/scrobble`
 `post_relay        ` | `POST  ` | `/api/v1/pleroma/admin/relay`
+`get_config        ` | `GET   ` | `"/api/pleroma/admin/config"`
 

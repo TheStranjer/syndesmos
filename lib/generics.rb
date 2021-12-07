@@ -14,7 +14,8 @@ class Syndesmos
     "/api/v1/pleroma/accounts/$ID/scrobbles",
     "/api/v1/accounts/$ID/statuses",
     "/api/v1/instance/peers",
-    "/api/v1/pleroma/admin/relay"
+    "/api/v1/pleroma/admin/relay",
+    "/api/pleroma/admin/config"
   ]
 
   GENERIC_POSTS = [
@@ -27,7 +28,8 @@ class Syndesmos
     "/api/v1/pleroma/accounts/$ID/unsubscribe",
     "/api/v1/statuses",
     "/api/v1/pleroma/scrobble",
-    "/api/v1/pleroma/admin/relay"
+    "/api/v1/pleroma/admin/relay",
+    "/api/pleroma/admin/config"
   ]
 
   GENERIC_PATCHES = [
