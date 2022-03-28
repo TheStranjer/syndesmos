@@ -54,6 +54,8 @@ class Syndesmos
       api::Post
     when :patch
       api::Patch
+    when :delete
+      api::Delete
     end
   end
 end
