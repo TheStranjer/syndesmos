@@ -37,7 +37,8 @@ class Syndesmos
   ]
 
   GENERIC_DELETES = [
-    "/api/v1/scheduled_statuses/$ID"
+    "/api/v1/scheduled_statuses/$ID",
+    "/api/v1/pleroma/admin/relay"
   ]
 
   GENERIC_TYPES = {:patch => GENERIC_PATCHES, :get => GENERIC_GETS, :post => GENERIC_POSTS, :delete => GENERIC_DELETES}
