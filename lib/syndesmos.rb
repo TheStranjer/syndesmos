@@ -27,7 +27,7 @@ class Syndesmos
 
   attr_accessor :hooks
 
-  def req(path:, http_method: :get, params: {})
+  def req(path:, http_method: :get, params: {}, include_headers: false)
     url = "https://#{instance}#{path}" 
     url += "?" + params.reject { |k,v| v.nil? }.collect {|k,v| "#{k}=#{v}" }.join('&' ) if http_method == :get and params.length > 0
     uri = URI.parse(url)
@@ -43,7 +43,19 @@ class Syndesmos
 
     res = http.request(req)
 
-    JSON.parse(res.body)
+    if include_headers
+      headers = {}
+      res.each_header.each do |key, value|
+        headers[key] = value
+      end
+
+      {
+        body: JSON.parse(res.body),
+        headers: headers
+      }
+    else
+      JSON.parse(res.body)
+    end
   end
 
   def http_method_obj(sym)
