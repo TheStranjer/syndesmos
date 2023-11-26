@@ -3,6 +3,7 @@ class Syndesmos
     "/api/pleroma/emoji",
     "/api/pleroma/captcha",
     "/api/v1/timelines/home",
+    "/api/v1/instance",
     "/api/v1/timelines/direct",
     "/api/v1/timelines/public",
     "/api/v1/notifications",
