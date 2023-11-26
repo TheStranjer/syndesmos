@@ -31,6 +31,7 @@ class Syndesmos
     "/api/v1/statuses",
     "/api/v1/pleroma/scrobble",
     "/api/v1/pleroma/admin/relay",
+    "/api/v1/instance", # NOTE: This is a hack to get around the fact that the #instance method is already defined
     "/api/pleroma/admin/config"
   ]
 
